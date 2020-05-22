@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  app:
+    build: .
+    command: http-server dist
+    volumes:
+      - ./pd_web:/pd_web
+      -  /pd_web/node_modules
+    ports:
+      - 8080:8080
