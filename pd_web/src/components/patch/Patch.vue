@@ -1,20 +1,19 @@
 <template src="./patch.html"></template>
 
 <script>
-import { bus } from '../../main'
 
 export default {
   name: 'Patch',
 
-  data: function () {
-    return {
-      count: 0
+  computed: {
+    count () {
+      return this.$store.state.count
     }
   },
 
   methods: {
       increaseCount (){
-          bus.$emit('added', ++this.count);
+          this.$store.commit('increment')
       }
   }
 

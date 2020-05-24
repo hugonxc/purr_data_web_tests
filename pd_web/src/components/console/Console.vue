@@ -1,22 +1,16 @@
 <template src="./console.html"></template>
 
 <script>
-import { bus } from '../../main'
 
 export default {
   name: 'Console',
 
-  data: function () {
-    return {
-      count: 0
+  computed: {
+    count () {
+      return this.$store.state.count
     }
-  },
-
-  created (){
-    bus.$on('added', (data) => {
-      this.count = data;
-    })
   }
+
 }
 
 import test from './console'
