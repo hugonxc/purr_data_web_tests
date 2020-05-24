@@ -1,7 +1,13 @@
 <template>
-  <div class="home">
-    <Console/>
-    <Patch/>
+  <div>
+    <v-tabs>
+      <v-tab>Console</v-tab>
+      <v-tab>Patch</v-tab>
+
+      <v-tab-item><Console/></v-tab-item>
+      <v-tab-item><Patch/></v-tab-item>
+    </v-tabs>
+
   </div>
 </template>
 
@@ -18,3 +24,9 @@ export default {
   }
 }
 </script>
+
+<style>
+div {
+  background-color: #f0efeb;
+}
+</style>
