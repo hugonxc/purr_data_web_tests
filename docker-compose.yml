@@ -3,7 +3,7 @@ version: '3.5'
 services:
   app:
     build: .
-    command: npm run dev
+    command: npm run serve
     volumes:
       - ./pd_web:/pd_web
       -  /pd_web/node_modules

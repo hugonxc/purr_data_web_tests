@@ -1,10 +1,14 @@
 FROM node:lts-alpine
 
-RUN npm install -g http-server
+RUN npm install -g @vue/cli
+
+RUN npm install -g @vue/cli-service
+
+RUN npm install -g @vue/cli-plugin-babel
+
+RUN npm install -g @vue/cli-plugin-eslint
 
 WORKDIR /pd_web
-
-ENV PATH /pd_web/node_modules/.bin:$PATH
 
 COPY pd_web/package*.json ./
 
