@@ -1,27 +1,53 @@
 <template>
   <div>
-    <v-tabs>
-      <v-tab>Console</v-tab>
-      <v-tab>Patch</v-tab>
+  <div class="home">
+    <h1>This is an home page</h1>
 
-      <v-tab-item><Console/></v-tab-item>
-      <v-tab-item><Patch/></v-tab-item>
+
+    <v-tabs fixed-tabs>
+      <v-tab :to="{name: 'console_d'}">Console</v-tab>
+      <v-tab :to="{name: 'patch_d', params: { filename: 'patch1.pd' }}">Patch1.pd</v-tab>
+      <v-tab :to="{name: 'patch_d', params: { filename: 'patch2.pd' }}">Patch2.pd</v-tab>
     </v-tabs>
+
+    <router-view></router-view>
+
+
+
+  </div>
 
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Console from '@/components/console/Console.vue'
-import Patch from '@/components/patch/Patch.vue'
+import Patch from '../components/patch/Patch';
+import Console from '../components/console/Console';
 
 export default {
   name: 'Home',
-  components: {
-    Console,
-    Patch
-  }
+  created() {
+    let { routes } = this.$router.options;
+    console.log("before",routes);    
+    let routeData = routes.find(r => r.path === this.$route.path);
+    routeData.children.push(
+      { name: 'console_d' ,  path: '/console', component: Console },
+      { name: 'patch_d' ,  path: '/patch/:filename', component: Patch },
+    );
+
+    this.$router.addRoutes([routeData])
+
+    // routes = this.$router.options;
+    // console.log("after",routes);    
+  },
+
+
+   methods: {
+    new_tab:function() {
+      console.log("new tab")
+    },
+   }
+
+
 }
 </script>
 
