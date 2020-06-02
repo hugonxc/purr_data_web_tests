@@ -5,6 +5,8 @@ import vuetify from './plugins/vuetify';
 import "vuetify/dist/vuetify.min.css";
 import store from './store/store';
 
+
+Vue.prototype.$myModule = null;
 Vue.config.productionTip = false
 export const bus = new Vue()
 
