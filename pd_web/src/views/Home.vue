@@ -3,14 +3,12 @@
   <html>
     <div>
       <div class="home">
-        <h1>This is an home page</h1>
-
-        <p>DSP: <input type="checkbox"  v-on:click="dsp" id="dsp"></p>
+        <h1>This is Home page</h1>
 
         <v-tabs fixed-tabs>
           <v-tab :to="{name: 'console_d'}">Console</v-tab>
-          <v-tab :to="{name: 'patch_d', params: { filename: 'patch1.pd' }}">Patch1.pd</v-tab>
-          <v-tab :to="{name: 'patch_d', params: { filename: 'patch2.pd' }}">Patch2.pd</v-tab>
+          <v-tab :to="{name: 'editor_d', params: { filename: 'patch1.pd' }}">Patch1.pd</v-tab>
+          <v-tab :to="{name: 'editor_d', params: { filename: 'patch2.pd' }}">Patch2.pd</v-tab>
         </v-tabs>
 
         <router-view></router-view>
@@ -22,12 +20,12 @@
 </template>
 
 <script>
-import Patch from '../components/patch/Patch';
+import Editor from '../components/editor/Editor';
 import Console from '../components/console/Console';
 
 
 import Module from '../emscripten/js/pdtest';
-import {initAudioCtx, resumeAudio, suspendAudio} from '../emscripten/utils/emscripten';
+import {initAudioCtx, suspendAudio} from '../emscripten/utils/audio_ctx';
 
 let moduleInstance = null;
 
@@ -47,24 +45,13 @@ export default {
     let routeData = routes.find(r => r.path === this.$route.path);
     routeData.children.push(
       { name: 'console_d' ,  path: '/console', component: Console },
-      { name: 'patch_d' ,  path: '/patch/:filename', component: Patch },
+      { name: 'editor_d' ,  path: '/editor/:filename', component: Editor },
     );
     this.$router.addRoutes([routeData])
 
     initAudioCtx()
+    suspendAudio()
   },
-
-  methods: {
-    dsp (event){
-      if(event.target.checked){
-        console.log("resume");
-        resumeAudio()
-      }else{
-        console.log("stop");
-        suspendAudio()
-      }
-    }
-  }
 }
 </script>
 

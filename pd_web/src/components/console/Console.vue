@@ -5,16 +5,20 @@
 export default {
   name: 'Console',
 
-  computed: {
-    count () {
-      return this.$store.state.count
+  computed: {    
+    audio_ctx_list(){      
+      if(this.$store.getters.audio_ctx_list.length > 0){
+        let msg = this.$store.commit("msgConsole", this.$store.getters.audio_ctx_list[0].state)
+        return this.$store.getters.consoleMsgs
+      }else{
+        return this.$store.getters.consoleMsgs
+      }
+
     }
-  }
+  },
 
 }
 
-import test from './console'
-test.foo()
 
 </script>
 

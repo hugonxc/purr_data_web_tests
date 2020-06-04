@@ -312,7 +312,7 @@ Module['ready'] = new Promise(function(resolve, reject) {
     }
   
    }
-   loadPackage({"files": [{"filename": "/test.pd", "start": 0, "end": 365, "audio": 0}], "remote_package_size": 365, "package_uuid": "671eff24-ed4e-4c5f-a1e0-87fb7dbd0f6a"});
+   loadPackage({"files": [{"filename": "/test.pd", "start": 0, "end": 365, "audio": 0}], "remote_package_size": 365, "package_uuid": "d5cfc6fd-0954-405a-86fb-c42272673bdf"});
   
   })();
   

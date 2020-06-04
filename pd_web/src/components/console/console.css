@@ -3,3 +3,7 @@ div {
     text-align: center;
     margin-left: 35px;
 }
+
+.pre-formatted {
+    white-space: pre;
+}

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Console from '../components/console/Console.vue'
-import Patch from '../components/patch/Patch.vue'
+import Editor from '../components/editor/Editor.vue'
 
 Vue.use(VueRouter)
 
@@ -20,9 +20,9 @@ Vue.use(VueRouter)
     component: About
   },
   {
-    path: '/patch/:filename',
-    name: 'patch',
-    component: Patch
+    path: '/editor/:filename',
+    name: 'editor',
+    component: Editor
   },
   {
     path: '/console',
