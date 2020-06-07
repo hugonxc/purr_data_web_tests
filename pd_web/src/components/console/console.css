@@ -1,9 +1,16 @@
-div {
-    width: fit-content;
-    text-align: center;
-    margin-left: 35px;
+.console-card{
+    border: 1px solid black !important;
 }
 
 .pre-formatted {
     white-space: pre;
 }
+
+.headline{
+    margin: 5px;
+}
+
+.card-title{
+    padding: 0;
+}
+

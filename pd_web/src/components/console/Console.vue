@@ -1,4 +1,18 @@
-<template src="./console.html"></template>
+<template>
+    <v-card class="console-card" flat>
+        <v-card-title class="card-title">
+          <v-icon>mdi-console</v-icon>
+          <div class="headline">Console</div>
+        </v-card-title>
+
+        <v-divider></v-divider>
+
+        <v-card-text>
+          {{ audio_ctx_list }}
+        </v-card-text>
+        
+    </v-card>
+</template>
 
 <script>
 

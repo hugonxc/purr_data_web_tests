@@ -1,25 +1,36 @@
 <template>
-  <!DOCTYPE html>
-  <html>
-    <div>
-      <div class="home">
-        <h1>This is Home page</h1>
+  <v-container class="grey" grid-list-sm>
 
-        <v-tabs fixed-tabs>
-          <v-tab :to="{name: 'console_d'}">Console</v-tab>
-          <v-tab :to="{name: 'editor_d', params: { filename: 'patch1.pd' }}">Patch1.pd</v-tab>
-          <v-tab :to="{name: 'editor_d', params: { filename: 'patch2.pd' }}">Patch2.pd</v-tab>
-        </v-tabs>
+    <v-layout row>
+      <v-flex>
+        <Navbar/>
+      </v-flex>
+    </v-layout>
 
-        <router-view></router-view>
-      </div>
+   <v-layout row wrap class="content">
+     <Sidebar/>
+      <v-flex class="c-content">
+        <v-layout column justify-space-between fill-height>
+          <div> 
+            <v-tabs fixed-tabs>
+              <v-tab :to="{name: 'editor_d', params: { filename: 'patch1.pd' }}">Patch1.pd</v-tab>
+              <v-tab :to="{name: 'editor_d', params: { filename: 'patch2.pd' }}">Patch2.pd</v-tab>
+            </v-tabs>
+            <router-view></router-view>
+          </div>
 
-    </div>
-  </html>
+          <Console/>
+        </v-layout>
+      </v-flex>
+   </v-layout>
 
+  </v-container>
 </template>
 
+
 <script>
+import Navbar from '../components/navbar/Navbar';
+import Sidebar from '../components/sidebar/Sidebar';
 import Editor from '../components/editor/Editor';
 import Console from '../components/console/Console';
 
@@ -27,17 +38,21 @@ import Console from '../components/console/Console';
 import Module from '../emscripten/js/pdtest';
 import {initAudioCtx, suspendAudio} from '../emscripten/utils/audio_ctx';
 
-let moduleInstance = null;
-
 
 export default {
   name: 'Home',
+  components:{
+    Navbar,
+    Sidebar,
+    Console
+  },
+
   beforeCreate() {
-    if (this.$myModule === null) {
-      new Module().then(myModule => {
-        this.$myModule = myModule;
-      });
-    }
+    // if (this.$myModule === null) {
+    //   new Module().then(myModule => {
+    //     this.$myModule = myModule;
+    //   });
+    // }
   },
 
   created() {
@@ -56,7 +71,19 @@ export default {
 </script>
 
 <style>
-div {
+.home {
   background-color: #f0efeb;
+}
+
+.container {
+  height: 100%;
+}
+
+.content{
+  height: 93%;
+}
+
+.c-content{
+  margin-left: 5px;
 }
 </style>
